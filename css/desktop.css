@@ -1,0 +1,99 @@
+/* TRAIL LIFE V.10.5 · janelas de aviso, convite de instalação e layout de desktop.
+   Carregado por último para vencer os estilos anteriores. Cores: noite/floresta/trilha/sol. */
+
+/* Corrige um vazamento de CSS de impressão (termo/PDF) que limitava TODO o app a
+   780px e o deixava espremido numa coluna estreita no computador. O app em si deve
+   ocupar a tela inteira; a largura dos documentos é controlada nas janelas de impressão. */
+html body{max-width:none!important;margin:0!important}
+#app{width:100%}
+
+/* ---------- 1. Janelas de aviso (tlConfirm / tlPrompt / tlAviso) ---------- */
+.tl-dlg-over{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;
+  padding:18px;background:#0a1d16cc;backdrop-filter:blur(2px);opacity:0;transition:opacity .16s ease}
+.tl-dlg-over.show{opacity:1}
+.tl-dlg{width:min(430px,100%);background:var(--creme,#fdfaf0);color:var(--tinta,#13241c);
+  border-radius:22px;border-top:6px solid var(--trilha,#c45b36);padding:26px 24px 22px;text-align:center;
+  box-shadow:0 26px 60px #0008;transform:translateY(14px) scale(.97);transition:transform .2s cubic-bezier(.2,1.1,.3,1)}
+.tl-dlg-over.show .tl-dlg{transform:none}
+.tl-dlg-over.danger .tl-dlg{border-top-color:#c0392b}
+.tl-dlg-ico{width:52px;height:52px;margin:0 auto 12px;border-radius:16px;display:grid;place-items:center;
+  font-size:26px;background:#0f42321a;color:var(--floresta,#0f4232)}
+.tl-dlg-over.danger .tl-dlg-ico{background:#c0392b1a;color:#c0392b}
+.tl-dlg h2{margin:0 0 8px;font:900 italic 24px/1.05 var(--av-titulo,'Barlow Condensed'),system-ui;text-transform:uppercase;letter-spacing:.01em}
+.tl-dlg-corpo{color:#45544c;font-size:14.5px;line-height:1.55}
+.tl-dlg-corpo p{margin:0 0 9px}.tl-dlg-corpo p:last-child{margin:0}
+.tl-dlg-campo{display:block;margin:14px 0 2px}
+.tl-dlg-campo textarea{width:100%;border:1px solid #cdd5c8;border-radius:12px;padding:11px 12px;font:inherit;background:#fff;min-height:70px;resize:vertical}
+.tl-dlg-acoes{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.tl-dlg-acoes .btn{min-width:120px}
+.tl-dlg-perigo{background:linear-gradient(180deg,#d9513d,#b5341f)!important;box-shadow:0 3px 0 #8f2817!important;color:#fff!important}
+
+/* ---------- 2. Convite de instalação (dentro do modal padrão) ---------- */
+.tl-conv{text-align:center}
+.tl-conv-emoji{font-size:46px;display:block;margin-bottom:6px}
+.tl-conv h2{margin:4px 0 10px;font:900 italic 28px/1 var(--av-titulo,'Barlow Condensed'),system-ui;text-transform:uppercase}
+.tl-conv p{color:#4b5a51;line-height:1.55;margin:0 auto 14px;max-width:360px}
+.tl-conv-benef{list-style:none;padding:0;margin:0 auto 18px;max-width:330px;display:grid;gap:8px;text-align:left}
+.tl-conv-benef li{background:#0f42320e;border-radius:12px;padding:10px 13px;font-size:13.5px;font-weight:700;color:#294a3c}
+.tl-conv-acoes{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.tl-conv-acoes .btn{min-width:150px}
+.tl-conv-nunca{display:block;margin:14px auto 0;background:none;border:0;color:#8a7d6a;font-size:12px;text-decoration:underline;cursor:pointer}
+
+/* ---------- 3a. Mobile/tablet (<920px): mantém o layout atual com a barra inferior ---------- */
+@media (max-width:919px){
+  html body .tl-side{display:none!important}
+  html body .shell{display:block!important;grid-template-columns:none!important}
+  /* mantém a barra inferior como já era (centralizada pelo app.css); só garante que apareça */
+  html body .bottom{display:flex!important}
+}
+
+/* ---------- 3b. Desktop (>=920px): menu lateral fixo no estilo Meu Terreiro ---------- */
+.tl-side{display:none}
+@media (min-width:920px){
+  html body .bottom{display:none!important}
+  html body .shell{display:grid!important;grid-template-columns:276px minmax(0,1fr)!important;width:auto!important;max-width:none!important;min-height:100vh;margin:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important}
+  html body .main{min-width:0}
+  html body .content{max-width:1280px;padding:30px clamp(26px,3.5vw,54px) 48px}
+
+  .tl-side{display:flex!important;flex-direction:column;background:
+      linear-gradient(180deg,#0a1d16,#0d2a20 60%,#0a1f18);
+    color:#e7efe6;padding:22px 16px 18px;position:sticky;top:0;height:100vh;overflow:auto;
+    box-shadow:inset -1px 0 0 #ffffff14, 4px 0 24px #0a1d1633}
+  .tl-side-marca{display:flex;align-items:center;gap:12px;padding:4px 8px 20px;margin-bottom:6px;border-bottom:1px solid #ffffff14}
+  .tl-side-logo{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex:0 0 auto;
+    background:linear-gradient(145deg,#1b5a43,#0f4232);box-shadow:0 4px 12px #0007;font-size:22px;overflow:hidden}
+  .tl-side-logo img{width:100%;height:100%;object-fit:cover}
+  .tl-side-marca b{display:block;font:900 italic 20px/1 var(--av-titulo,'Barlow Condensed'),system-ui;letter-spacing:.02em}
+  .tl-side-marca small{display:block;color:var(--sol,#dd9433);font-size:9.5px;font-weight:800;letter-spacing:.22em;margin-top:3px}
+  .tl-side-nav{display:flex;flex-direction:column;gap:3px;margin-top:6px}
+  .tl-side-sec{color:#8aa79a;font-size:10px;font-weight:800;letter-spacing:.17em;padding:16px 12px 6px}
+  .tl-side-nav button{display:flex;align-items:center;gap:12px;border:0;background:transparent;color:#cfe0d6;
+    border-radius:13px;padding:11px 12px;text-align:left;font-weight:700;font-size:14.5px;width:100%;transition:background .15s,color .15s}
+  .tl-side-nav button:hover{background:#ffffff14;color:#fff}
+  .tl-side-ico{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#ffffff12;flex:0 0 auto;transition:background .15s}
+  .tl-side-nav button:hover .tl-side-ico{background:#ffffff22}
+  .tl-side-nav button.ativo{background:linear-gradient(120deg,#c45b36,#a8451f);color:#fff;box-shadow:0 6px 16px #c45b3655}
+  .tl-side-nav button.ativo .tl-side-ico{background:#ffffff2e}
+  .tl-side-novo{margin:18px 6px 10px;border:0;border-radius:14px;padding:13px;font-weight:800;font-size:14px;cursor:pointer;
+    color:#fff;background:linear-gradient(180deg,var(--brasa,#e2733f),var(--trilha,#c45b36));box-shadow:0 4px 0 var(--trilha-forte,#a8451f);text-transform:uppercase;letter-spacing:.04em}
+  .tl-side-novo:hover{filter:brightness(1.07)}
+  .tl-side-perfil{margin-top:auto;display:flex;align-items:center;gap:11px;border:0;background:#ffffff10;
+    border-radius:15px;padding:11px 12px;color:#e7efe6;text-align:left;cursor:pointer;transition:background .15s}
+  .tl-side-perfil:hover{background:#ffffff1e}
+  .tl-side-av{width:38px;height:38px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;overflow:hidden;
+    background:linear-gradient(145deg,#1b5a43,#0f4232);color:#cfe7dc;font-weight:900;font-size:16px}
+  .tl-side-av img{width:100%;height:100%;object-fit:cover}
+  .tl-side-perfil b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
+  .tl-side-perfil small{display:block;color:#9bb3a6;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
+
+  /* o cabeçalho de topo continua, mas o botão "+ Nova saída" dele some (já está no menu) */
+  html body .top .btn{display:none}
+  html body .top{position:sticky;top:0}
+
+  /* faixas de capa das telas ficam mais contidas em telas largas */
+  html body .shell[data-view] .page-intro{padding-right:30%}
+}
+
+@media (min-width:1500px){
+  html body .content{max-width:1360px}
+}

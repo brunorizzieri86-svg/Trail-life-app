@@ -1,2 +1,2 @@
-/*! TRAIL LIFE 10.4.2 · © 2026 Bruno Rizzieri · Todos os direitos reservados · Lei 9.609/98 · TLSIG-6bqKOmYY-BR26 · build 7565C122A9-261118 */
-'use strict';const APP_VERSION='10.4.2';const APP_NAME='TRAIL LIFE';const TL_VENDAS_WHATS='5511953525141';
+/*! TRAIL LIFE 10.5.0 · © 2026 Bruno Rizzieri · Todos os direitos reservados · Lei 9.609/98 · TLSIG-6bqKOmYY-BR26 · build A93251CF6D-261118 */
+'use strict';const APP_VERSION='10.5.0';const APP_NAME='TRAIL LIFE';const TL_VENDAS_WHATS='5511953525141';
