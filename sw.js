@@ -1,10 +1,10 @@
-/* TRAIL LIFE · © 2026 Bruno Rizzieri · TLSIG-6bqKOmYY-BR26 · build D0C7895CF4-261118 */const TL_SWA=[207022101,3233374865],TL_SWOK=(()=>{try{const n=String(self.location.hostname||'').toLowerCase().replace(/^www\./,'');if(!n||n==='localhost'||n==='127.0.0.1')return true;let x=2166136261;for(let i=0;i<n.length;i++){x^=n.charCodeAt(i);x=Math.imul(x,16777619)>>>0}return TL_SWA.includes(x>>>0)}catch(e){return false}})();
+/* TRAIL LIFE · © 2026 Bruno Rizzieri · TLSIG-6bqKOmYY-BR26 · build 7565C122A9-261118 */const TL_SWA=[4055660479,3233374865],TL_SWOK=(()=>{try{const n=String(self.location.hostname||'').toLowerCase().replace(/^www\./,'');if(!n||n==='localhost'||n==='127.0.0.1')return true;let x=2166136261;for(let i=0;i<n.length;i++){x^=n.charCodeAt(i);x=Math.imul(x,16777619)>>>0}return TL_SWA.includes(x>>>0)}catch(e){return false}})();
 if(!TL_SWOK){self.addEventListener('install',()=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(self.registration.unregister()))}else{
 /* TRAIL LIFE · Service Worker V.10.0
    Estratégia "rede primeiro": busca a versão nova quando há internet e usa o cache só offline.
    A versão nova espera o usuário tocar em "Atualizar agora" (mensagem SKIP_WAITING).
    Ao lançar uma versão: troque CACHE aqui e APP_VERSION em js/00-config.js. */
-const CACHE='trail-life-v10.4.1';
+const CACHE='trail-life-v10.4.2';
 const SHELL=[
   './','./index.html','./manifest.webmanifest','./offline.html',
   './css/app.css','./css/fase1.css','./css/aventura.css','./css/pro.css',
