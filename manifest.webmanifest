@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "TRAIL LIFE • Gestão do guia",
+  "short_name": "Trail Life",
+  "description": "Gestão para guias de trilha e expedições: roteiros, participantes, termos, segurança e financeiro. Funciona offline.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3f2e9",
+  "theme_color": "#0a1d16",
+  "categories": ["travel", "productivity", "business"],
+  "icons": [
+    {"src": "img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
